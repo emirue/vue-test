@@ -1,22 +1,42 @@
 <template>
   <div>
     <h1>Welcome to {{ title }}!</h1>
-    <label>
-      <input type="text" v-model="inputText" />
-    </label>
-    <button type="button" @click="getData">Get</button>
-    <button type="button" @click="setData">Set</button>
+    <div class="container">
+      <div class="row">
+        <div class="card w-100 mb-2">
+          <div class="card-body">
+            <div class="col-12">
+              <label>
+                <input type="text" class="form-control" v-model="inputText" />
+              </label>
+            </div>
+            <div class="col-12">
+              <div class="btn-group">
+                <button class="btn btn-primary" type="button" @click="getData">Get</button>
+                <button class="btn btn-warning" type="button" @click="setData">Set</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <select class="form-control" v-model="region" @change="changeRegion">
-      <option :key="i" :value="d.v" v-for="(d, i) in options">{{d.t}}</option>
-    </select>
+      <div class="row w-100">
+        <label class="w-100">
+          <select class="form-control" v-model="region" @change="changeRegion">
+            <option :key="i" :value="d.v" v-for="(d, i) in options">{{d.t}}</option>
+          </select>
+        </label>
+      </div>
 
-    <table class="table table-bordered" v-if="tableShow">
-      <tr :key="i" v-for="(d, i) in options">
-        <th>{{d.v}}</th>
-        <td>{{d.t}}</td>
-      </tr>
-    </table>
+      <div class="row">
+        <table class="table table-bordered" v-if="tableShow">
+          <tr :key="i" v-for="(d, i) in options">
+            <th>{{d.v}}</th>
+            <td>{{d.t}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -35,7 +55,7 @@ export default {
         v: 'j', t: 'jeju',
       }],
       region: 'j',
-      tableShow: false
+      tableShow: true
     }
   },
   watch: {
